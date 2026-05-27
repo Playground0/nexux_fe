@@ -91,7 +91,7 @@ export default function NumberGuess() {
   const isMyTurn = gameState.currentTurnPlayer === playerName;
 
   return (
-    <div className="glass-panel" style={{ maxWidth: '600px', margin: '0 auto' }}>
+    <div className="glass-panel game-panel">
       <h1 className="title" style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center' }}>Number Guesser</h1>
       <div style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--text-secondary)' }}>
         Session: {sessionId} | You are: <strong style={{ color: 'var(--primary-color)' }}>{playerName}</strong>
