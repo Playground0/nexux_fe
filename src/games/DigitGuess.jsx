@@ -84,7 +84,7 @@ export default function DigitGuess() {
   const opponentGuessHistory = gameState.guessHistory ? (gameState.guessHistory[playerName] || []) : [];
 
   return (
-    <div className="glass-panel" style={{ maxWidth: '700px', margin: '0 auto' }}>
+    <div className="glass-panel game-panel">
       <h1 className="title" style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center' }}>Digit Guesser</h1>
       <div style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--text-secondary)' }}>
         Session: {sessionId} | You: <strong style={{ color: 'var(--primary-color)' }}>{playerName}</strong>
@@ -167,15 +167,7 @@ export default function DigitGuess() {
             <h3 style={{ marginBottom: '1rem' }}>Opponent's Number (Your Progress)</h3>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem' }}>
               {myRevealOfOpponent.map((d, i) => (
-                <div key={i} style={{
-                  width: '60px', height: '60px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1.5rem', fontWeight: 'bold',
-                  borderRadius: '8px',
-                  background: d !== '_' ? 'rgba(16, 185, 129, 0.3)' : 'rgba(255,255,255,0.05)',
-                  border: d !== '_' ? '2px solid #10b981' : '2px solid var(--glass-border)',
-                  color: d !== '_' ? '#10b981' : 'var(--text-secondary)'
-                }}>
+                <div key={i} className={`digit-box ${d !== '_' ? 'digit-revealed' : ''}`}>
                   {d}
                 </div>
               ))}
@@ -202,7 +194,7 @@ export default function DigitGuess() {
           )}
 
           {/* Guess histories side by side */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="two-col-grid">
             <div>
               <h3 style={{ marginBottom: '0.5rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.5rem' }}>Your Guesses (vs {opponent})</h3>
               <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
